@@ -1,10 +1,28 @@
 const fs = require("fs")
 
+const buffer = require("buffer")
+
+console.log(buffer.constants.MAX_STRING_LENGTH)
 
 
+
+/*
 fs.readFile("./pi-billion.txt","utf8",  (err, data)=>{
+  if(err){console.log(err)}
   console.log(data)
 })
+*/
+
+
+let raw
+
+let stream = fs.createReadStream("./pi-billion.txt", "utf8")
+
+stream.on("data", (data)=>{
+    raw += Number(data)
+    console.log( Number(data))
+})
+
 
 
 
